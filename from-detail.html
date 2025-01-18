@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Personal, Education, and Document Details</title>
+  <link rel="stylesheet" href="css/form.css">
+</head>
+
+<body style="background-color: rgb(230, 207, 159);">
+
+  <div class="bg-dark p-3 text-white text-center">
+    
+  </div><br>
+
+  <!-- Navigation Icons Section -->
+  <div class="d-flex justify-content-around mt-2 flex-wrap">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2 text-center mb-3">
+      <i class="fa fa-user bg-success rounded-circle p-3" id="navlogo"></i>
+      <div>Personal Details</div>
+    </div>
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2 text-center mb-3">
+      <i class="fa bg-success fa-graduation-cap rounded-circle p-3" id="navlogo"></i>
+      <div>Educational Details</div>
+    </div>
+    <div class="d-grid col-12 col-sm-4 col-md-3 col-lg-2 text-center mb-3">
+      <i class="fa-regular bg-success fa-file-image rounded-circle p-3" id="navlogo"></i>
+      <div>Document Details</div>
+    </div>
+    <div class="step-line"></div>
+  </div><br><br>
+
+  <!-- Personal Details Section -->
+  <div id="personal-details">
+    <form class="container border border-dark p-4 shadow-lg rounded" onsubmit="return validatePersonalDetails()">
+      <fieldset>
+        <legend><b>Personal Information*</b></legend>
+        <div class="row mb-3">
+          <div class="col-md-4 ">
+            <label for="Adhar" class="form-label "> Adhar No:</label>
+            <input type="text" id="Adhar" placeholder="xxx xxx xxx 123" class="form-control shadow-lg" required>
+          </div>
+          <div class="col-md-4">
+            <label for="lname" class="form-label">Full Name:</label>
+            <input type="text" id="lname" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="number" class="form-label">Mobile Number:</label>
+            <input type="tel" id="number" placeholder="xxxxxxxxxx" class="form-control" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="caste" class="form-label">Caste:</label>
+            <select id="caste" name="caste" class="form-select" required>
+              <option value="open">Open</option>
+              <option value="sc">SC</option>
+              <option value="OBC">OBC</option>
+              <option value="EWS">EWS</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="age" class="form-label">Age:</label>
+            <input type="text" id="age" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input type="date" id="dob" class="form-control" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" placeholder="@xxxxGmail.com" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label for="gender" class="form-label">Gender:</label>
+            <select id="gender" name="gender" class="form-select" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="status" class="form-label">Marital Status:</label><br>
+            <input type="radio" id="married" name="status" value="married" required>
+            <label for="married">Married</label>
+            <input type="radio" id="single" name="status" value="single" required>
+            <label for="single">Single</label><br>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="showSection('education-details')">Next</button>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- Education Details Section -->
+  <div id="education-details" style="display: none;">
+    <form class="container border border-dark p-4 shadow-lg rounded" onsubmit="return validateEducationDetails()">
+      <fieldset>
+        <legend>Education Information*</legend>
+        <div id="qualification-container">
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="qualification" class="form-label">Highest Qualification:</label>
+              <select name="qualification[]" class="form-select qualification" required>
+                <option value="10th">10th</option>
+                <option value="12th">12th</option>
+                <option value="Graduation">Graduation</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="institution" class="form-label">Institution Name</label>
+              <input type="text" name="institution[]" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+              <label for="graduation-year" class="form-label">Year of Graduation</label>
+              <input type="text" name="graduation-year[]" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+              <label for="certification"><b>Upload Certification*</b></label><br>
+              <input type="file" name="certification[]" class="form-control" required>
+            </div>
+
+          </div>
+        </div>
+        <div class="row mb-3">
+          
+          <div class="col-md-4 d-flex mt-3">
+            <button type="button" class="btn btn-primary" onclick="showSection('document-details')">Next</button>&nbsp;
+            <button type="button" class="btn btn-secondary" onclick="addQualification()">Add Another Qualification</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- Document Details Section -->
+  <div id="document-details" style="display: none;">
+    <form class="container border border-dark p-4 shadow-lg rounded" onsubmit="submitdata()">
+      <fieldset>
+        <legend>Document Verification*</legend>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="photo"><b>Photo*</b></label><br>
+            <input type="file" id="photo" name="photo" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="adhar-card"><b>Adhar card*</b></label><br>
+            <input type="file" id="adhar-card" name="adhar-card" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="12th-cert"><b>12th certification*</b></label><br>
+            <input type="file" id="12th-cert" name="12th-cert" class="form-control" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="domicile-cert"><b>Domicile Certification*</b></label><br>
+            <input type="file" id="domicile-cert" name="domicile-cert" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="pan-card"><b>Pan card*</b></label><br>
+            <input type="file" id="pan-card" name="pan-card" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="driving-license"><b>Driving License*</b></label><br>
+            <input type="file" id="driving-license" name="driving-license" class="form-control" required>
+          </div>
+        </div>
+        <div class="row mb-3 d-flex justify-content-end">
+          <div class="col-md-1">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#previewModal" onclick="previewData()">Preview</button>
+          </div>
+          <div class="col-md-1">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <!-- Preview Modal -->
+    <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="previewModalLabel">Preview Submitted Data</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h5>Personal Details</h5>
+            <ul id="personalPreview"></ul>
+            <h5>Education Details</h5>
+            <ul id="educationPreview"></ul>
+            <h5>Document Details</h5>
+            <ul id="documentPreview"></ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submitted Data Table -->
+    <div id="crud-operation-section" style="margin-top: 30px;">
+      <h3>Submitted Data*</h3>
+      <div style="overflow-x: auto; max-height: 400px; border: 1px solid #ddd; padding: 10px;">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th colspan="9" class="bg-dark text-white text-center">Personal Details</th>
+              <th colspan="4" class="bg-dark text-white text-center">Education Details</th>
+              <th colspan="6" class="bg-dark text-white text-center">Document Details</th>
+            </tr>
+            <tr>
+              <th>Adhar No</th>
+              <th>Full Name</th>
+              <th>Mobile Number</th>
+              <th>Caste</th>
+              <th>Age</th>
+              <th>Date of Birth</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Marital Status</th>
+              <th>Highest Qualification</th>
+              <th>Institution</th>
+              <th>Graduation Year</th>
+              <th>Certification</th>
+              <th>Photo</th>
+              <th>Adhar Card</th>
+              <th>12th Certification</th>
+              <th>Domicile Certification</th>
+              <th>Pan Card</th>
+              <th>Driving License</th>
+            </tr>
+          </thead>
+          <tbody id="crudDataTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      if (sectionId === 'education-details' && validatePersonalDetails()) {
+        storePersonalDetails();
+        document.getElementById('personal-details').style.display = 'none';
+        document.getElementById('education-details').style.display = 'block';
+      }
+      if (sectionId === 'document-details' && validateEducationDetails()) {
+        storeEducationDetails();
+        document.getElementById('education-details').style.display = 'none';
+        document.getElementById('document-details').style.display = 'block';
+      }
+      if (sectionId === 'crud-operation-section' && validateDocumentDetails()) {
+        storeDocumentDetails();
+        document.getElementById('document-details').style.display = 'none';
+        document.getElementById('crud-operation-section').style.display = 'block';
+      }
+    }
+
+    function storePersonalDetails() {
+      const personalDetails = {
+        Adhar: document.getElementById('Adhar').value,
+        FullName: document.getElementById('lname').value,
+        Mobile: document.getElementById('number').value,
+        Caste: document.getElementById('caste').value,
+        Age: document.getElementById('age').value,
+        DOB: document.getElementById('dob').value,
+        Email: document.getElementById('email').value,
+        Gender: document.getElementById('gender').value,
+        Status: document.querySelector('input[name="status"]:checked').value
+      };
+      localStorage.setItem('PersonalDetails', JSON.stringify(personalDetails));
+    }
+
+    function storeEducationDetails() {
+      const qualifications = document.querySelectorAll('.qualification');
+      const institutions = document.querySelectorAll('input[name="institution[]"]');
+      const graduationYears = document.querySelectorAll('input[name="graduation-year[]"]');
+      const certifications = document.querySelectorAll('input[name="certification[]"]');
+
+      const educationDetails = [];
+      
+      for (let i = 0; i < qualifications.length; i++) {
+        const qualification = qualifications[i].value;
+        const institution = institutions[i].value;
+        const graduationYear = graduationYears[i].value;
+        const certification = certifications[i].files[0] ? certifications[i].files[0].name : '';
+
+        educationDetails.push({
+          Qualification: qualification,
+          Institution: institution,
+          GraduationYear: graduationYear,
+          Certification: certification
+        });
+      }
+
+      localStorage.setItem('EducationDetails', JSON.stringify(educationDetails));
+    }
+
+    function storeDocumentDetails() {
+  const documentDetails = {
+    Photo: document.getElementById('photo').files[0] ? document.getElementById('photo').files[0].name : '',
+    AdharCard: document.getElementById('adhar-card').files[0] ? document.getElementById('adhar-card').files[0].name : '',
+    TwelfthCert: document.getElementById('12th-cert').files[0] ? document.getElementById('12th-cert').files[0].name : '',
+    DomicileCert: document.getElementById('domicile-cert').files[0] ? document.getElementById('domicile-cert').files[0].name : '',
+    PanCard: document.getElementById('pan-card').files[0] ? document.getElementById('pan-card').files[0].name : '',
+    DrivingLicense: document.getElementById('driving-license').files[0] ? document.getElementById('driving-license').files[0].name : ''
+  };
+  localStorage.setItem('DocumentDetails', JSON.stringify(documentDetails));
+}
+
+
+    function validatePersonalDetails() {
+      let adhar = document.getElementById('Adhar').value;
+      let name = document.getElementById('lname').value;
+      let number = document.getElementById('number').value;
+      let age = document.getElementById('age').value;
+      let dob = document.getElementById('dob').value;
+      let email = document.getElementById('email').value;
+      let gender = document.getElementById('gender').value;
+      let maritalStatus = document.querySelector('input[name="status"]:checked');
+
+      if (adhar === '' || name === '' || number === '' || age === '' || dob === '' || !maritalStatus) {
+        alert("Please fill all required fields in Personal Details.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateEducationDetails() {
+      const qualifications = document.querySelectorAll('.qualification');
+      const institutions = document.querySelectorAll('input[name="institution[]"]');
+      const graduationYears = document.querySelectorAll('input[name="graduation-year[]"]');
+      const certifications = document.querySelectorAll('input[name="certification[]"]');
+
+      for (let i = 0; i < qualifications.length; i++) {
+        if (qualifications[i].value === '' || institutions[i].value === '' || graduationYears[i].value === '') {
+          alert("Please fill all required fields in Education Details.");
+          return false;
+        }
+
+        if (certifications[i] && certifications[i].files.length === 0) {
+          alert("Please upload a certification for all qualifications.");
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function validateDocumentDetails() {
+  let photo = document.getElementById('photo').files[0];
+  let adharCard = document.getElementById('adhar-card').files[0];
+  let twelfthCert = document.getElementById('12th-cert').files[0];
+  let domicileCert = document.getElementById('domicile-cert').files[0];
+  let panCard = document.getElementById('pan-card').files[0];
+  let drivingLicense = document.getElementById('driving-license').files[0];
+
+  if (!photo || !adharCard || !twelfthCert || !domicileCert || !panCard || !drivingLicense) {
+    alert("Please upload all required documents.");
+    return false;
+  }
+  return true;
+}
+
+
+function previewData() {
+  // Fetching personal details from localStorage and parsing it
+  const personalDetails = JSON.parse(localStorage.getItem('PersonalDetails') || '{}');
+  const personalPreview = document.getElementById('personalPreview');
+  personalPreview.innerHTML = `
+    <ul>
+        <li><b>Full Name:</b> ${personalDetails.FullName || 'Not Provided'}</li>
+        <li><b>Email:</b> ${personalDetails.Email || 'Not Provided'}</li>
+        <li><b>Phone:</b> ${personalDetails.Mobile || 'Not Provided'}</li>
+        <li><b>Age:</b> ${personalDetails.Age || 'Not Provided'}</li>
+        <hr>
+    </ul>
+  `;
+
+  // Fetching education details from localStorage and parsing it
+  const educationDetails = JSON.parse(localStorage.getItem('EducationDetails') || '[]');
+  const educationPreview = document.getElementById('educationPreview');
+  educationPreview.innerHTML = educationDetails.map(detail => `
+    <ul>
+        <li><b>Highest Qualification:</b> ${detail.Qualification || 'Not Provided'}</li>
+        <li><b>Institution:</b> ${detail.Institution || 'Not Provided'}</li>
+        <li><b>Graduation Year:</b> ${detail.GraduationYear || 'Not Provided'}</li>
+        <li><b>Certification:</b> ${detail.Certification || 'Not Provided'}</li>
+        <hr>
+    </ul>
+  `).join('');
+
+  // Fetching document details from localStorage and parsing it
+  const documentDetails = JSON.parse(localStorage.getItem('DocumentDetails') || '{}');
+  const documentPreview = document.getElementById('documentPreview');
+
+  documentPreview.innerHTML = `
+    <ul>
+        <li><b>Photo:</b> ${documentDetails.Photo ? `<img src="path/to/photo/${documentDetails.Photo}" width="100" alt="Photo">` : 'Not Provided'}</li>
+        <li><b>Adhar Card:</b> ${documentDetails.AdharCard ? `<a href="path/to/adhar/${documentDetails.AdharCard}" target="_blank">View Adhar Card</a>` : 'Not Provided'}</li>
+        <li><b>12th Certificate:</b> ${documentDetails.TwelfthCert ? `<a href="path/to/12th/${documentDetails.TwelfthCert}" target="_blank">View 12th Certificate</a>` : 'Not Provided'}</li>
+        <li><b>Domicile Certificate:</b> ${documentDetails.DomicileCert ? `<a href="path/to/domicile/${documentDetails.DomicileCert}" target="_blank">View Domicile Certificate</a>` : 'Not Provided'}</li>
+        <li><b>Pan Card:</b> ${documentDetails.PanCard ? `<a href="path/to/pan/${documentDetails.PanCard}" target="_blank">View Pan Card</a>` : 'Not Provided'}</li>
+        <li><b>Driving License:</b> ${documentDetails.DrivingLicense ? `<a href="path/to/driving-license/${documentDetails.DrivingLicense}" target="_blank">View Driving License</a>` : 'Not Provided'}</li>
+        <hr>
+    </ul>
+  `;
+}
+
+
+
+
+    function showSuccessMessage() {
+      alert("Form submitted successfully!");
+      renderSubmittedData();
+    }
+
+    function renderSubmittedData() {
+    console.log('renderSubmittedData');
+    const crudDataTable = document.getElementById('crudDataTable');
+    crudDataTable.innerHTML = ''; // Clear existing data
+
+    const submittedData = JSON.parse(localStorage.getItem('SubmittedData')) || [];
+
+    submittedData.forEach(data => {
+        console.log(data);
+        const newRow = document.createElement('tr');
+        
+        // Handle Photo - Display image if available
+        const photoDisplay = data.documentDetails.Photo
+            ? `<img src="${data.documentDetails.Photo}" width="100" alt="Photo">`
+            : 'Not Provided';
+        
+        // Handle Adhar Card - Link if available
+        const adharCardDisplay = data.documentDetails.AdharCard
+            ? `<a href="${data.documentDetails.AdharCard}" target="_blank">View Adhar Card</a>`
+            : 'Not Provided';
+        
+        // Handle 12th Certificate - Link if available
+        const twelfthCertDisplay = data.documentDetails.TwelfthCert
+            ? `<a href="${data.documentDetails.TwelfthCert}" target="_blank">View 12th Certificate</a>`
+            : 'Not Provided';
+
+        // Handle Domicile Certificate - Link if available
+        const domicileCertDisplay = data.documentDetails.DomicileCert
+            ? `<a href="${data.documentDetails.DomicileCert}" target="_blank">View Domicile Certificate</a>`
+            : 'Not Provided';
+
+        // Handle Pan Card - Link if available
+        const panCardDisplay = data.documentDetails.PanCard
+            ? `<a href="${data.documentDetails.PanCard}" target="_blank">View Pan Card</a>`
+            : 'Not Provided';
+
+        // Handle Driving License - Link if available
+        const drivingLicenseDisplay = data.documentDetails.DrivingLicense
+            ? `<a href="${data.documentDetails.DrivingLicense}" target="_blank">View Driving License</a>`
+            : 'Not Provided';
+
+        newRow.innerHTML = `
+            <td>${data.personalDetails.Adhar || 'Not Provided'}</td>
+            <td>${data.personalDetails.FullName || 'Not Provided'}</td>
+            <td>${data.personalDetails.Mobile || 'Not Provided'}</td>
+            <td>${data.personalDetails.Caste || 'Not Provided'}</td>
+            <td>${data.personalDetails.Age || 'Not Provided'}</td>
+            <td>${data.personalDetails.DOB || 'Not Provided'}</td>
+            <td>${data.personalDetails.Email || 'Not Provided'}</td>
+            <td>${data.personalDetails.Gender || 'Not Provided'}</td>
+            <td>${data.personalDetails.Status || 'Not Provided'}</td>
+            <td>${data.educationDetails.map(detail => detail.Qualification).join(', ') || 'Not Provided'}</td>
+            <td>${data.educationDetails.map(detail => detail.Institution).join(', ') || 'Not Provided'}</td>
+            <td>${data.educationDetails.map(detail => detail.GraduationYear).join(', ') || 'Not Provided'}</td>
+            <td>${data.educationDetails.map(detail => detail.Certification).join(', ') || 'Not Provided'}</td>
+            <td>${photoDisplay}</td>
+            <td>${adharCardDisplay}</td>
+            <td>${twelfthCertDisplay}</td>
+            <td>${domicileCertDisplay}</td>
+            <td>${panCardDisplay}</td>
+            <td>${drivingLicenseDisplay}</td>
+        `;
+        crudDataTable.appendChild(newRow);
+    });
+}
+
+
+function storeSubmittedData() {
+    const personalDetails = JSON.parse(localStorage.getItem('PersonalDetails') || '{}');
+    const educationDetails = JSON.parse(localStorage.getItem('EducationDetails') || '[]');
+    const documentDetails = JSON.parse(localStorage.getItem('DocumentDetails') || '{}');
+
+    const newEntry = {
+        personalDetails,
+        educationDetails,
+        documentDetails
+    };
+
+    const submittedData = JSON.parse(localStorage.getItem('SubmittedData')) || [];
+    submittedData.push(newEntry);
+
+    localStorage.setItem('SubmittedData', JSON.stringify(submittedData));
+}
+
+
+
+
+    function storeSubmittedData() {
+      const personalDetails = JSON.parse(localStorage.getItem('PersonalDetails') || '{}');
+      const educationDetails = JSON.parse(localStorage.getItem('EducationDetails') || '[]');
+      const documentDetails = JSON.parse(localStorage.getItem('DocumentDetails') || '{}');
+
+      const newEntry = {
+        personalDetails,
+        educationDetails,
+        documentDetails
+      };
+
+      const submittedData = JSON.parse(localStorage.getItem('SubmittedData')) || [];
+      submittedData.push(newEntry);
+
+      localStorage.setItem('SubmittedData', JSON.stringify(submittedData));
+    }
+    // Submit form event listener
+document.querySelector('#document-details form').onsubmit = function (event) {
+    event.preventDefault();
+    if (validateDocumentDetails()) {
+        storeDocumentDetails();
+        storeSubmittedData();  // Ensure we store the final submitted data
+        alert("Form submitted successfully!");
+        renderSubmittedData();  // Ensure the table is updated with new data
+    }
+};
+
+   
+
+    function addQualification() {
+      const qualificationContainer = document.getElementById('qualification-container');
+
+      const newRow = document.createElement('div');
+      newRow.classList.add('row', 'mb-3');
+
+      newRow.innerHTML = `
+        <div class="col-md-4">
+          <label for="qualification" class="form-label">Highest Qualification:</label>
+          <select name="qualification[]" class="form-select qualification" required>
+            <option value="10th">10th</option>
+            <option value="12th">12th</option>
+            <option value="Graduation">Graduation</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="institution" class="form-label">Institution Name</label>
+          <input type="text" name="institution[]" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label for="graduation-year" class="form-label">Year of Graduation</label>
+          <input type="text" name="graduation-year[]" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="certification"><b>Upload Certification*</b></label><br>
+            <input type="file" name="certification[]" class="form-control" required>
+          </div>
+      `;
+
+      qualificationContainer.appendChild(newRow);
+    }
+</script>
+
+</body>
+
+</html>
